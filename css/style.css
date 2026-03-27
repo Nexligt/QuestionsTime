@@ -16,9 +16,9 @@ h1,h2,h3{
 
 button{
     border:none;
-    border-radius:6px;
+    border-radius:0.6vw;
     cursor:pointer;
-    font-size:14px;
+    font-size:1.2vw;
 }
 
 /* ================================
@@ -39,7 +39,7 @@ button{
 }
 
 #title {
-    font-size: 5rem; /* plus gros que le header */
+    font-size: 8vw; /* titre principal */
     font-weight: bold;
     margin: 0;
     transition: all 0.6s cubic-bezier(.2,.8,.2,1);
@@ -48,33 +48,28 @@ button{
 
 /* texte sous le titre */
 .start-text {
-    margin-top: 10px;
+    margin-top: 2.5vw;
     color: #666;
-    font-size: 1.2rem;
+    font-size: 3vw;
 }
 
-
 /* état quand l'app démarre */
-
 body.app-started #home{
     pointer-events:none;
 }
 
 /* animation bouton principal */
-
 .main-action{
     display:flex;
     justify-content:center;
-    margin:25px 0;
+    margin:3vw 0;
 }
 
 .btn.big{
-    font-size:18px;
-    padding:14px 26px;
-    border-radius:10px;
+    font-size:1.5vw;
+    padding:1vw 2vw;
+    border-radius:0.7vw;
 }
-
-
 
 /* ================================
    HEADER
@@ -82,28 +77,27 @@ body.app-started #home{
 
 .header {
     text-align: center;
-    padding: 20px 0;
+    padding:2vw 0;
     position: relative;
     z-index: 10;
 }
 
 .header h1 {
-    font-size: 2.8rem; /* taille finale après animation */
+    font-size: 4vw; /* taille finale après animation */
     transition: all 0.7s cubic-bezier(.2,.8,.2,1);
 }
-
 
 /* ================================
    MAIN CONTAINER
 ================================ */
 
 .container{
-    max-width:900px;
+    max-width:90vw;
     margin:auto;
-    padding:20px;
+    padding:2vw;
     display: none;
     opacity: 0;
-    transition: opacity 0.5s ease 0.7s; /* 0.7s = durée animation titre */
+    transition: opacity 0.5s ease 0.7s;
 }
 
 body.app-started .container {
@@ -111,27 +105,24 @@ body.app-started .container {
     opacity: 1;
 }
 
-
 /* ================================
    QUESTION CARD
 ================================ */
 
 .question-card{
     background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom:25px;
+    padding:3vw;
+    border-radius:1.2vw;
+    box-shadow:0 0.4vw 1vw rgba(0,0,0,0.1);
+    margin-bottom:2.5vw;
     animation:fadeCard .3s ease;
 }
 
 @keyframes fadeCard{
-
   from{
       opacity:0;
-      transform:translateY(10px);
+      transform:translateY(1vw);
   }
-
   to{
       opacity:1;
       transform:translateY(0);
@@ -141,31 +132,30 @@ body.app-started .container {
 .question-header{
     display:flex;
     justify-content:center;
-    gap:10px;
+    gap:2vw;
 }
 
 .question-body{
     text-align:center;
-    margin:30px 0;
+    margin:3vw 0;
 }
 
 #questionText{
-    font-size:1.6rem;
+    font-size:2vw;
 }
 
 .question-actions{
     display:flex;
     justify-content:center;
-    gap:10px;
+    gap:1.5vw;
 }
-
 
 /* ================================
    BUTTONS
 ================================ */
 
 .btn{
-    padding:10px 16px;
+    padding:1vw 1.5vw;
     background:#e4e6eb;
     transition:background .2s;
 }
@@ -193,13 +183,12 @@ body.app-started .container {
 }
 
 .btn.small{
-    padding:6px 10px;
-    font-size:12px;
+    padding:0.5vw 1vw;
+    font-size:1vw;
 }
 
-
 /* ================================
-   STRICT MODE (TON CODE CONSERVÉ)
+   STRICT MODE
 ================================ */
 
 #strictToggle{
@@ -214,47 +203,44 @@ body.app-started .container {
     background-color:#2f9e44;
 }
 
-
 /* ================================
    FILTERS PANEL
 ================================ */
 
 .filters-panel{
-    margin-bottom:25px;
+    margin-bottom:2.5vw;
 }
 
 .filters-header{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:10px;
-    margin-bottom:10px;
+    gap:2vw;
+    margin-bottom:1.5vw;
 }
 
 .filters-list{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:6px;
-    max-height:150px;
+    gap:1vw;
+    max-height:40vw;
     overflow-y:auto;
 }
-
 
 /* TAGS */
 
 .tag{
-    padding:5px 10px;
+    padding:0.8vw 1.5vw;
     background:#edf2ff;
-    border-radius:20px;
+    border-radius:2vw;
     cursor:pointer;
-    font-size:13px;
+    font-size:1vw;
 }
 
 .tag:hover{
     background:#dbe4ff;
 }
-
 
 /* ================================
    TOOLS PANEL
@@ -263,10 +249,9 @@ body.app-started .container {
 .tools-panel{
     display:flex;
     justify-content:center;
-    gap:10px;
-    margin-bottom:20px;
+    gap:2vw;
+    margin-bottom:2vw;
 }
-
 
 /* ================================
    MESSAGE
@@ -274,10 +259,9 @@ body.app-started .container {
 
 .message{
     text-align:center;
-    margin-top:10px;
+    margin-top:1.5vw;
     color:green;
 }
-
 
 /* ================================
    FORMULAIRE
@@ -294,13 +278,12 @@ body.app-started .container {
 
 .modal-content{
     background:white;
-    padding:30px;
-    border-radius:10px;
-    width:420px;
-    max-width:90%;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    padding:3vw;
+    border-radius:1vw;
+    width:90%;
+    max-width:25vw;
+    box-shadow:0 1.5vw 5vw rgba(0,0,0,0.2);
 }
-
 
 /* ================================
    INPUTS
@@ -308,18 +291,17 @@ body.app-started .container {
 
 input, textarea{
     width:100%;
-    padding:8px;
-    margin:5px 0 12px 0;
-    border-radius:6px;
+    padding:1vw;
+    margin:0.5vw 0 1.5vw 0;
+    border-radius:0.6vw;
     border:1px solid #ccc;
-    font-size:14px;
+    font-size:1vw;
 }
 
 textarea{
-    min-height:90px;
+    min-height:8vw;
     resize:vertical;
 }
-
 
 /* ================================
    TAG INPUT
@@ -335,64 +317,56 @@ textarea{
     right:0;
     background:white;
     border:1px solid #ccc;
-    border-radius:6px;
-    max-height:150px;
+    border-radius:0.6vw;
+    max-height:30vw;
     overflow-y:auto;
     display:none;
     z-index:10;
 }
 
 .tag-list{
-    margin-top:8px;
+    margin-top:0.8vw;
 }
-
 
 /* ================================
    FORM ACTIONS
 ================================ */
 
 .form-actions{
-    margin-top:15px;
+    margin-top:1.5vw;
     display:flex;
     justify-content:flex-end;
-    gap:10px;
+    gap:1vw;
 }
-
 
 /* ================================
    RESPONSIVE
 ================================ */
 
 @media (max-width:600px){
-
     .question-card{
-        padding:20px;
-    }
-
-    #questionText{
-        font-size:1.3rem;
+        padding:3vw;
     }
 
     .tools-panel{
         flex-direction:column;
         align-items:center;
     }
-
 }
 
 /* Deleted Menu */
 .deleted-container {
     background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 20px;
+    padding:2vw;
+    border-radius:1.2vw;
+    box-shadow: 0 0.4vw 1.2vw rgba(0,0,0,0.1);
+    margin-top:2vw;
 }
 
 .deleted-header {
     font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size:1.2vw;
+    margin-bottom:1.5vw;
     text-align: center;
     color: #333;
 }
@@ -400,28 +374,28 @@ textarea{
 .deleted-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap:1.2vw;
 }
 
 .deleted-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    border-radius: 8px;
+    padding:1.2vw 1.5vw;
+    border-radius:0.8vw;
     background: #f7f9fc;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .deleted-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-0.2vw);
+    box-shadow: 0 0.4vw 1.2vw rgba(0,0,0,0.15);
 }
 
 .deleted-text {
     flex: 1;
-    margin-right: 12px;
-    font-size: 0.95rem;
+    margin-right:1vw;
+    font-size:1vw;
     color: #222;
 }
 
@@ -429,16 +403,16 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-top: 15px;
+    gap:1.5vw;
+    margin-top:1.5vw;
 }
 
 .deleted-nav button {
-    min-width: 40px;
+    min-width:4vw;
 }
 
 .deleted-page {
-    font-size: 0.95rem;
+    font-size:1vw;
     color: #555;
 }
 
@@ -447,7 +421,7 @@ textarea{
     .deleted-card {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap:0.8vw;
     }
     .deleted-text {
         margin-right: 0;

@@ -2,146 +2,146 @@
 <html lang="fr">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QuestionsTime</title>
+    <title>QuestionsTime</title>
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
 
-<link rel="icon" type="image/png" href="image/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="image/favicon.svg" />
-<link rel="shortcut icon" href="image/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="? Time ?" />
+    <link rel="icon" type="image/png" href="image/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg" />
+    <link rel="shortcut icon" href="image/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="? Time ?" />
 </head>
 
 <body>
 
-<header class="header">
-    <h1>QuestionsTime</h1>
-</header>
+    <header class="header">
+        <h1>QuestionsTime</h1>
+    </header>
 
-<div id="home">
-    <h1 id="title">QuestionsTime</h1>
-    <p id="startText" class="start-text">Cliquer pour commencer</p>
-</div>
+    <div id="home">
+        <h1 id="title">QuestionsTime</h1>
+        <p id="startText" class="start-text">Cliquer pour commencer</p>
+    </div>
 
-<div id="installPopup" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:1000;">
-    <p>Vous pouvez installer l'application sur votre appareil !</p>
-    <button id="installBtn">Installer</button>
-    <button id="cancelInstallBtn">Annuler</button>
-</div>
+    <div id="installPopup" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:1000;">
+        <p>Vous pouvez installer l'application sur votre appareil !</p>
+        <button id="installBtn">Installer</button>
+        <button id="cancelInstallBtn">Annuler</button>
+    </div>
 
-<main class="container">
+    <main class="container">
 
-    <!-- QUESTION -->
-    <section class="question-card">
+        <!-- QUESTION -->
+        <section class="question-card">
 
-        <div class="question-header">
-            <button id="strictToggle" class="btn small">Mode strict</button>
-            <button id="btnResetHistory" class="btn small">Reset historique</button>
-        </div>
+            <div class="question-header">
+                <button id="strictToggle" class="btn small">Mode strict</button>
+                <button id="btnResetHistory" class="btn small">Reset historique</button>
+            </div>
 
-        <div class="question-body">
-            <h2 id="questionText">Chargement...</h2>
-            <input type="hidden" id="currentQuestionId">
-        </div>
+            <div class="question-body">
+                <h2 id="questionText">Chargement...</h2>
+                <input type="hidden" id="currentQuestionId">
+            </div>
 
-         <!-- BOUTON PRINCIPAL -->
-        <div class="main-action">
-            <button id="btnNouvelle" class="btn primary big">
-                Question suivante
-            </button>
-        </div>
+            <!-- BOUTON PRINCIPAL -->
+            <div class="main-action">
+                <button id="btnNouvelle" class="btn primary big">
+                    Question suivante
+                </button>
+            </div>
 
-    </section>
-
-
-    <!-- FILTRES -->
-    <section class="filters-panel">
-
-        <div class="filters-header">
-            <h3>Filtres</h3>
-            <button id="filterToggle" class="btn small">
-                Afficher
-            </button>
-        </div>
-
-        <div id="filters" class="filters-list" style="display:none">
-            <!-- généré par JS -->
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- ACTIONS SECONDAIRES -->
-    <section class="tools-panel">
+        <!-- FILTRES -->
+        <section class="filters-panel">
 
-        <button id="btnSupprimer" class="btn danger">Supprimer</button>
-        <button id="btnNewQuestion" class="btn">Créer</button>
-        <button id="btnEditQuestion" class="btn">Modifier</button>
-        <button id="btnDeletedQuestions" class="btn">Supprimées</button>
+            <div class="filters-header">
+                <h3>Filtres</h3>
+                <button id="filterToggle" class="btn small">
+                    Afficher
+                </button>
+            </div>
 
-    </section>
+            <div id="filters" class="filters-list" style="display:none">
+                <!-- généré par JS -->
+            </div>
 
-    <div id="message" class="message"></div>
-
-    <div id="deletedMenu" style="display:none"></div>
-
-</main>
-
-
-
-<!-- FORMULAIRE QUESTION -->
-<div id="QuestionForm" class="modal">
-
-    <div class="modal-content">
-
-        <h2 id="headerQuestionForm">Nouvelle question</h2>
-
-        <label>Auteur</label>
-        <input type="text" id="questionAuthor">
-
-        <label>Question</label>
-        <textarea id="questionTextInput"></textarea>
+        </section>
 
 
-        <label>Tags</label>
+        <!-- ACTIONS SECONDAIRES -->
+        <section class="tools-panel">
 
-        <div class="tag-input">
-            <button id="addTagBtn">Ajouter</button>
-            <input type="text" id="tagInput" placeholder="Tapez un tag">
-            <div id="tagSuggestions" class="tag-suggestions"></div>
+            <button id="btnSupprimer" class="btn danger">Supprimer</button>
+            <button id="btnNewQuestion" class="btn">Créer</button>
+            <button id="btnEditQuestion" class="btn">Modifier</button>
+            <button id="btnDeletedQuestions" class="btn">Supprimées</button>
 
-        </div>
+        </section>
 
-        <div id="tagList" class="tag-list"></div>
+        <div id="message" class="message"></div>
 
-        <div class="form-actions">
-            <button id="submitQuestion" class="btn primary">Valider</button>
-            <button id="btnCancelEdit" class="btn">Annuler</button>
+        <div id="deletedMenu" style="display:none"></div>
+
+    </main>
+
+
+
+    <!-- FORMULAIRE QUESTION -->
+    <div id="QuestionForm" class="modal">
+
+        <div class="modal-content">
+
+            <h2 id="headerQuestionForm">Nouvelle question</h2>
+
+            <label>Auteur</label>
+            <input type="text" id="questionAuthor">
+
+            <label>Question</label>
+            <textarea id="questionTextInput"></textarea>
+
+
+            <label>Tags</label>
+
+            <div class="tag-input">
+                <button id="addTagBtn">Ajouter</button>
+                <input type="text" id="tagInput" placeholder="Tapez un tag">
+                <div id="tagSuggestions" class="tag-suggestions"></div>
+
+            </div>
+
+            <div id="tagList" class="tag-list"></div>
+
+            <div class="form-actions">
+                <button id="submitQuestion" class="btn primary">Valider</button>
+                <button id="btnCancelEdit" class="btn">Annuler</button>
+            </div>
+
         </div>
 
     </div>
 
-</div>
 
 
-
-<script src="js/storage.js"></script>
-<script src="js/questions.js"></script>
-<script src="js/app.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js')
-        .then(() => console.log('Service Worker enregistré'))
-        .catch(err => console.error('Erreur SW', err));
-}
-</script>
+    <script src="js/storage.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(() => console.log('Service Worker enregistré'))
+            .catch(err => console.error('Erreur SW', err));
+    }
+    </script>
 
 </body>
 </html>
