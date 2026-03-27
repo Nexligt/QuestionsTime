@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "texte": "Quelle est ta plus grande peur ?",
+    "tags": ["personnel", "émotion"],
+    "author": "base"
+  },
+  {
+    "id": 2,
+    "texte": "Si tu pouvais voyager n'importe où, où irais-tu ?",
+    "tags": ["fun", "voyage"],
+    "author": "base"
+  },
+  {
+    "id": 3,
+    "texte": "Quelle est la dernière chose qui t'a fait rire aux éclats ?",
+    "tags": ["fun", "émotion"],
+    "author": "base"
+  },
+  {
+    "id": 4,
+    "texte": "Quel est ton souvenir d'enfance préféré ?",
+    "tags": ["personnel", "émotion"],
+    "author": "base"
+  },
+  {
+    "id": 5,
+    "texte": "Si tu pouvais changer une chose dans le monde, ce serait quoi ?",
+    "tags": ["intime", "réflexion"],
+    "author": "base"
+  },
+  {
+    "id": 6,
+    "texte": "Quelle chanson te met instantanément de bonne humeur ?",
+    "tags": ["fun", "musique"],
+    "author": "base"
+  },
+  {
+    "id": 7,
+    "texte": "Quelle est ta nourriture préférée et pourquoi ?",
+    "tags": ["fun", "personnel"],
+    "author": "base"
+  },
+  {
+    "id": 8,
+    "texte": "Quel est le défi le plus difficile que tu aies relevé ?",
+    "tags": ["personnel", "réflexion"],
+    "author": "base"
+  },
+  {
+    "id": 9,
+    "texte": "Si tu pouvais parler à ton futur toi, que lui dirais-tu ?",
+    "tags": ["intime", "réflexion"],
+    "author": "base"
+  },
+  {
+    "id": 10,
+    "texte": "Quel est le film ou série que tu pourrais regarder encore et encore ?",
+    "tags": ["fun", "divertissement"],
+    "author": "base"
+  }
+]
