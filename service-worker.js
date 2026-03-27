@@ -15,10 +15,18 @@ const urlsToCache = [
   './data/questions.base.json'
 ];
 
+
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
+      return Promise.allSettled(
+        urlsToCache.map(url => 
+          fetch(url).then(resp => {
+            if (!resp.ok) throw new Error(`Failed to fetch ${url}`);
+            return cache.put(url, resp);
+          })
+        )
+      );
     })
   );
 });
