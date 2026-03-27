@@ -13,9 +13,20 @@
       "src": "image/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
+  "screenshots": [
+  {
+    "src": "image/web-app-manifest-192x192.png",
+    "sizes": "192x192",
+    "form_factor": "wide"
+  },
+  {
+    "src": "image/web-app-manifest-512x512.png",
+    "sizes": "512x512"
+  }
+],
   "theme_color": "#278282",
   "background_color": "#278282",
   "display": "standalone"
