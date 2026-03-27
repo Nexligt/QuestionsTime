@@ -16,16 +16,16 @@ h1,h2,h3{
 
 button{
     border:none;
-    border-radius:0.6vw;
+    border-radius:clamp(4px, 0.6vw, 8px);
     cursor:pointer;
-    font-size:1.2vw;
+    font-size:clamp(12px, 1.2vw, 16px);
 }
 
 /* ================================
    START SCREEN
 ================================ */
 
-/* HOME SCREEN */
+				 
 #home {
     position: fixed;
     inset: 0;
@@ -39,37 +39,42 @@ button{
 }
 
 #title {
-    font-size: 8vw; /* titre principal */
+    font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: bold;
     margin: 0;
     transition: all 0.6s cubic-bezier(.2,.8,.2,1);
     transform-origin: top center;
 }
 
-/* texte sous le titre */
+						 
 .start-text {
-    margin-top: 2.5vw;
+    margin-top: clamp(8px, 2.5vw, 20px);
     color: #666;
-    font-size: 3vw;
+    font-size: clamp(14px, 3vw, 20px);
 }
 
-/* état quand l'app démarre */
+
+								
+
 body.app-started #home{
     pointer-events:none;
 }
 
-/* animation bouton principal */
+								
+
 .main-action{
     display:flex;
     justify-content:center;
-    margin:3vw 0;
+    margin:clamp(15px, 3vw, 30px) 0;
 }
 
 .btn.big{
-    font-size:1.5vw;
-    padding:1vw 2vw;
-    border-radius:0.7vw;
+    font-size:clamp(14px, 1.5vw, 18px);
+    padding:clamp(10px, 1vw, 16px) clamp(16px, 2vw, 28px);
+    border-radius:clamp(6px, 0.7vw, 12px);
 }
+
+
 
 /* ================================
    HEADER
@@ -77,24 +82,25 @@ body.app-started #home{
 
 .header {
     text-align: center;
-    padding:2vw 0;
+    padding:clamp(15px, 2vw, 30px) 0;
     position: relative;
     z-index: 10;
 }
 
 .header h1 {
-    font-size: 4vw; /* taille finale après animation */
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
     transition: all 0.7s cubic-bezier(.2,.8,.2,1);
 }
+
 
 /* ================================
    MAIN CONTAINER
 ================================ */
 
 .container{
-    max-width:90vw;
+    max-width:900px;
     margin:auto;
-    padding:2vw;
+    padding:clamp(15px, 2vw, 30px);
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease 0.7s;
@@ -105,24 +111,27 @@ body.app-started .container {
     opacity: 1;
 }
 
+
 /* ================================
    QUESTION CARD
 ================================ */
 
 .question-card{
     background:white;
-    padding:3vw;
-    border-radius:1.2vw;
-    box-shadow:0 0.4vw 1vw rgba(0,0,0,0.1);
-    margin-bottom:2.5vw;
+    padding:clamp(20px, 3vw, 35px);
+    border-radius:clamp(10px, 1.2vw, 16px);
+    box-shadow:0 clamp(2px, 0.4vw, 6px) clamp(6px, 1vw, 15px) rgba(0,0,0,0.1);
+    margin-bottom:clamp(15px, 2.5vw, 30px);
     animation:fadeCard .3s ease;
 }
 
 @keyframes fadeCard{
+
   from{
       opacity:0;
-      transform:translateY(1vw);
+      transform:translateY(clamp(5px, 1vw, 12px));
   }
+
   to{
       opacity:1;
       transform:translateY(0);
@@ -132,30 +141,31 @@ body.app-started .container {
 .question-header{
     display:flex;
     justify-content:center;
-    gap:2vw;
+    gap:clamp(8px, 2vw, 20px);
 }
 
 .question-body{
     text-align:center;
-    margin:3vw 0;
+    margin:clamp(20px, 3vw, 40px) 0;
 }
 
 #questionText{
-    font-size:2vw;
+    font-size:clamp(16px, 2vw, 26px);
 }
 
 .question-actions{
     display:flex;
     justify-content:center;
-    gap:1.5vw;
+    gap:clamp(8px, 1.5vw, 20px);
 }
+
 
 /* ================================
    BUTTONS
 ================================ */
 
 .btn{
-    padding:1vw 1.5vw;
+    padding:clamp(8px, 1vw, 14px) clamp(12px, 1.5vw, 20px);
     background:#e4e6eb;
     transition:background .2s;
 }
@@ -183,12 +193,13 @@ body.app-started .container {
 }
 
 .btn.small{
-    padding:0.5vw 1vw;
-    font-size:1vw;
+    padding:clamp(5px, 0.5vw, 8px) clamp(8px, 1vw, 12px);
+    font-size:clamp(11px, 1vw, 14px);
 }
 
+
 /* ================================
-   STRICT MODE
+   STRICT MODE (TON CODE CONSERVÉ)
 ================================ */
 
 #strictToggle{
@@ -203,44 +214,48 @@ body.app-started .container {
     background-color:#2f9e44;
 }
 
+
 /* ================================
    FILTERS PANEL
 ================================ */
 
 .filters-panel{
-    margin-bottom:2.5vw;
+    margin-bottom:clamp(15px, 2.5vw, 30px);
 }
 
 .filters-header{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:2vw;
-    margin-bottom:1.5vw;
+    gap:clamp(8px, 2vw, 20px);
+    margin-bottom:clamp(8px, 1.5vw, 15px);
 }
 
 .filters-list{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:1vw;
-    max-height:40vw;
+    gap:clamp(5px, 1vw, 12px);
+    max-height:150px;
     overflow-y:auto;
 }
 
-/* TAGS */
+/* ================================
+   TAGS
+================================ */
 
 .tag{
-    padding:0.8vw 1.5vw;
+    padding:clamp(4px, 0.8vw, 8px) clamp(8px, 1.5vw, 14px);
     background:#edf2ff;
-    border-radius:2vw;
+    border-radius:clamp(15px, 2vw, 25px);
     cursor:pointer;
-    font-size:1vw;
+    font-size:clamp(11px, 1vw, 14px);
 }
 
 .tag:hover{
     background:#dbe4ff;
 }
+
 
 /* ================================
    TOOLS PANEL
@@ -249,9 +264,10 @@ body.app-started .container {
 .tools-panel{
     display:flex;
     justify-content:center;
-    gap:2vw;
-    margin-bottom:2vw;
+    gap:clamp(8px, 1.5vw, 15px);
+    margin-bottom:clamp(15px, 2vw, 25px);
 }
+
 
 /* ================================
    MESSAGE
@@ -259,9 +275,10 @@ body.app-started .container {
 
 .message{
     text-align:center;
-    margin-top:1.5vw;
+    margin-top:clamp(8px, 1.5vw, 15px);
     color:green;
 }
+
 
 /* ================================
    FORMULAIRE
@@ -278,12 +295,13 @@ body.app-started .container {
 
 .modal-content{
     background:white;
-    padding:3vw;
-    border-radius:1vw;
-    width:90%;
-    max-width:25vw;
-    box-shadow:0 1.5vw 5vw rgba(0,0,0,0.2);
+    padding:clamp(20px, 3vw, 35px);
+    border-radius:clamp(8px, 1vw, 14px);
+    width:420px;
+    max-width:90%;
+    box-shadow:0 clamp(4px, 1vw, 10px) clamp(10px, 5vw, 30px) rgba(0,0,0,0.2);
 }
+
 
 /* ================================
    INPUTS
@@ -291,17 +309,18 @@ body.app-started .container {
 
 input, textarea{
     width:100%;
-    padding:1vw;
-    margin:0.5vw 0 1.5vw 0;
-    border-radius:0.6vw;
+    padding:clamp(6px, 1vw, 10px);
+    margin:clamp(4px, 0.5vw, 8px) 0 clamp(10px, 1.5vw, 16px) 0;
+    border-radius:clamp(5px, 0.6vw, 8px);
     border:1px solid #ccc;
-    font-size:1vw;
+    font-size:clamp(12px, 1vw, 15px);
 }
 
 textarea{
-    min-height:8vw;
+    min-height:90px;
     resize:vertical;
 }
+
 
 /* ================================
    TAG INPUT
@@ -317,56 +336,64 @@ textarea{
     right:0;
     background:white;
     border:1px solid #ccc;
-    border-radius:0.6vw;
-    max-height:30vw;
+    border-radius:clamp(5px, 0.6vw, 8px);
+    max-height:clamp(120px, 15vw, 200px);
     overflow-y:auto;
     display:none;
     z-index:10;
 }
 
 .tag-list{
-    margin-top:0.8vw;
+    margin-top:clamp(6px, 0.8vw, 12px);
 }
+
 
 /* ================================
    FORM ACTIONS
 ================================ */
 
 .form-actions{
-    margin-top:1.5vw;
+    margin-top:clamp(10px, 1.5vw, 20px);
     display:flex;
     justify-content:flex-end;
-    gap:1vw;
+    gap:clamp(8px, 1vw, 16px);
 }
+
 
 /* ================================
    RESPONSIVE
 ================================ */
 
 @media (max-width:600px){
+
     .question-card{
-        padding:3vw;
+        padding:clamp(15px, 3vw, 25px);
     }
+
+				  
+						 
+	 
 
     .tools-panel{
         flex-direction:column;
         align-items:center;
     }
+
 }
 
 /* Deleted Menu */
 .deleted-container {
     background: #fff;
-    padding:2vw;
-    border-radius:1.2vw;
-    box-shadow: 0 0.4vw 1.2vw rgba(0,0,0,0.1);
-    margin-top:2vw;
+    padding:clamp(15px, 2vw, 25px);
+    border-radius:clamp(10px, 1.2vw, 16px);
+    box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.2vw, 16px) rgba(0,0,0,0.1);
+    margin-top:clamp(15px, 2vw, 25px);
 }
 
 .deleted-header {
     font-weight: bold;
-    font-size:1.2vw;
-    margin-bottom:1.5vw;
+    font-size:clamp(14px, 1.2vw, 18px);
+    margin-bottom:clamp(10px, 1.5vw, 20px);
     text-align: center;
     color: #333;
 }
@@ -374,28 +401,28 @@ textarea{
 .deleted-list {
     display: flex;
     flex-direction: column;
-    gap:1.2vw;
+    gap:clamp(8px, 1.2vw, 16px);
 }
 
 .deleted-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:1.2vw 1.5vw;
-    border-radius:0.8vw;
+    padding:clamp(10px, 1.2vw, 16px) clamp(12px, 1.5vw, 20px);
+    border-radius:clamp(6px, 0.8vw, 12px);
     background: #f7f9fc;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .deleted-card:hover {
-    transform: translateY(-0.2vw);
-    box-shadow: 0 0.4vw 1.2vw rgba(0,0,0,0.15);
+    transform: translateY(clamp(-1px, -0.2vw, -3px));
+    box-shadow: 0 clamp(2px, 0.4vw, 6px) clamp(8px, 1.2vw, 16px) rgba(0,0,0,0.15);
 }
 
 .deleted-text {
     flex: 1;
-    margin-right:1vw;
-    font-size:1vw;
+    margin-right:clamp(8px, 1vw, 16px);
+    font-size:clamp(13px, 1vw, 15px);
     color: #222;
 }
 
@@ -403,16 +430,16 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:1.5vw;
-    margin-top:1.5vw;
+    gap:clamp(10px, 1.5vw, 20px);
+    margin-top:clamp(10px, 1.5vw, 20px);
 }
 
 .deleted-nav button {
-    min-width:4vw;
+    min-width:clamp(35px, 4vw, 50px);
 }
 
 .deleted-page {
-    font-size:1vw;
+    font-size:clamp(12px, 1vw, 15px);
     color: #555;
 }
 
@@ -421,7 +448,7 @@ textarea{
     .deleted-card {
         flex-direction: column;
         align-items: flex-start;
-        gap:0.8vw;
+        gap:clamp(6px, 1vw, 10px);
     }
     .deleted-text {
         margin-right: 0;
