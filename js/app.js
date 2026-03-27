@@ -8,6 +8,41 @@ let currentTags = [];
 
 const RECENT_LIMIT = 10;
 
+// ===== Pop-Up Add Appli ====
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Empêche l’affichage automatique du popup du navigateur
+    e.preventDefault();
+    // Sauvegarde l’événement pour plus tard
+    deferredPrompt = e;
+
+    // Affiche ton popup personnalisé
+    showInstallPopup();
+});
+
+function showInstallPopup() {
+    const popup = document.getElementById('installPopup');
+    popup.style.display = 'block';
+
+    const installBtn = document.getElementById('installBtn');
+    const cancelBtn = document.getElementById('cancelInstallBtn');
+
+    installBtn.addEventListener('click', async () => {
+        popup.style.display = 'none';
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // Affiche le popup du navigateur
+            const choiceResult = await deferredPrompt.userChoice;
+            console.log('Choix utilisateur :', choiceResult.outcome);
+            deferredPrompt = null;
+        }
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+}
+
 // ===== Mode strict =====
 let strictMode = true; // true = strict ON, false = strict OFF
 
