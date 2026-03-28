@@ -454,3 +454,70 @@ textarea{
         margin-right: 0;
     }
 }
+
+
+/* ================================
+   POPUP INSTALL PWA
+================================ */
+
+.install-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 1000;
+
+    transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.install-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.install-content {
+    background: white;
+    padding: 16px 20px;
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    width: 320px;
+    max-width: 90vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.install-text {
+    margin: 0;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* Boutons alignés */
+.install-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Boutons cohérents avec ton UI */
+.install-actions .btn {
+    flex: 1;
+}
+
+/* Option bouton secondaire */
+#cancelInstallBtn {
+    background: #eee;
+}
+
+#cancelInstallBtn:hover {
+    background: #ddd;
+}

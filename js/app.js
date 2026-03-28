@@ -6,42 +6,123 @@ let recentHistory = [];     // 10 dernières questions (mode libre)
 let allTags = [];
 let currentTags = [];
 
+// ===== CONFIG =====
 const RECENT_LIMIT = 10;
+const APP_VERSION = "1.0.4";
 
-// ===== Pop-Up Add Appli ====
+// ===== Service Worker =====
 let deferredPrompt;
+let popupVisible = false;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Empêche l’affichage automatique du popup du navigateur
-    e.preventDefault();
-    // Sauvegarde l’événement pour plus tard
-    deferredPrompt = e;
 
-    // Affiche ton popup personnalisé
-    showInstallPopup();
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js')
+    .then(reg => {
+      console.log("Service Worker enregistré !");
+    })
+    .catch(err => console.error("SW registration failed:", err));
+}
+
+// ===== Au lancement =====
+window.addEventListener('load', () => {
+  checkPWAStatus();
 });
 
-function showInstallPopup() {
-    const popup = document.getElementById('installPopup');
-    popup.style.display = 'block';
+// ===== FUNCTIONS =====
+function checkPWAStatus() {
+  const installedVersion = localStorage.getItem('installedVersion');
+  const refusedVersion = localStorage.getItem('installRefusedVersion');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
-    const installBtn = document.getElementById('installBtn');
-    const cancelBtn = document.getElementById('cancelInstallBtn');
+  if (popupVisible) return;
+  
+  // ===== CAS 1 : App non installée mais version refusée = current version → ne rien afficher =====
+  if (refusedVersion === APP_VERSION) return;
 
-    installBtn.addEventListener('click', async () => {
-        popup.style.display = 'none';
-        if (deferredPrompt) {
-            deferredPrompt.prompt(); // Affiche le popup du navigateur
-            const choiceResult = await deferredPrompt.userChoice;
-            console.log('Choix utilisateur :', choiceResult.outcome);
-            deferredPrompt = null;
-        }
-    });
+  // ===== CAS 2 : App déjà installée mais version différente → proposer MAJ =====
+  if (isStandalone) {
+    if (installedVersion !== APP_VERSION) {
+      showUpdatePopupSimple();
+    }
+    return;
+  }
 
-    cancelBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
+  // ===== CAS 3 : App non installée → proposer installation =====
+  showInstallPopupSimple();
 }
+
+// ===== Installation =====
+function showInstallPopupSimple() {
+  popupVisible = true;
+
+  const popup = document.getElementById('installPopup');
+  const installBtn = document.getElementById('installBtn');
+  const cancelBtn = document.getElementById('cancelInstallBtn');
+  const text = popup.querySelector(".install-text");
+
+  text.innerHTML = "Vous pouvez installer <strong>QuestionsTime</strong> sur votre appareil !";
+  installBtn.textContent = "Installer";
+
+  popup.classList.add('show');
+
+  installBtn.onclick = async () => {
+    popup.classList.remove('show');
+    popupVisible = false;
+
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === "accepted") {
+        localStorage.setItem('installedVersion', APP_VERSION);
+      }
+
+      deferredPrompt = null;
+    }
+  };
+
+  cancelBtn.onclick = () => {
+    popup.classList.remove('show');
+    popupVisible = false;
+    localStorage.setItem('installRefusedVersion', APP_VERSION);
+  };
+}
+
+// ===== Mise à jour =====
+function showUpdatePopupSimple() {
+  popupVisible = true;
+
+  const popup = document.getElementById('installPopup');
+  const installBtn = document.getElementById('installBtn');
+  const cancelBtn = document.getElementById('cancelInstallBtn');
+  const text = popup.querySelector(".install-text");
+
+  text.innerHTML = "🚀 Une nouvelle version de <strong>QuestionsTime</strong> est disponible !";
+  installBtn.textContent = "Mettre à jour";
+
+  popup.classList.add('show');
+
+  installBtn.onclick = () => {
+    popup.classList.remove('show');
+    popupVisible = false;
+    localStorage.setItem('installedVersion', APP_VERSION);
+
+    // reload pour prendre en compte la nouvelle version du SW
+    window.location.reload();
+  };
+
+  cancelBtn.onclick = () => {
+    popup.classList.remove('show');
+    popupVisible = false;
+  };
+}
+
+// ===== BeforeInstallPrompt =====
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
 
 // ===== Mode strict =====
 let strictMode = true; // true = strict ON, false = strict OFF

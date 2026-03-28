@@ -7,7 +7,7 @@
 
     <title>QuestionsTime</title>
 
-    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" href="css/style.css?v=3">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
 
@@ -29,11 +29,17 @@
         <p id="startText" class="start-text">Cliquer pour commencer</p>
     </div>
 
-    <div id="installPopup" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-    background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:1000;">
-        <p>Vous pouvez installer l'application sur votre appareil !</p>
-        <button id="installBtn">Installer</button>
-        <button id="cancelInstallBtn">Annuler</button>
+    <div id="installPopup" class="install-popup">
+        <div class="install-content">
+            <p class="install-text">
+                Installer <strong>QuestionsTime</strong> sur votre appareil ?
+            </p>
+
+            <div class="install-actions">
+                <button id="cancelInstallBtn" class="btn">Plus tard</button>
+                <button id="installBtn" class="btn primary">Installer</button>
+            </div>
+        </div>
     </div>
 
     <main class="container">
@@ -135,13 +141,6 @@
     <script src="js/storage.js"></script>
     <script src="js/questions.js"></script>
     <script src="js/app.js"></script>
-    <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js')
-            .then(() => console.log('Service Worker enregistré'))
-            .catch(err => console.error('Erreur SW', err));
-    }
-    </script>
 
 </body>
 </html>
