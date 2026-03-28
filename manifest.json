@@ -21,6 +21,10 @@
     "src": "image/web-app-manifest-512x512.png",
     "sizes": "512x512",
     "form_factor": "wide"
+  },
+  {
+    "src": "image/web-app-manifest-512x512.png",
+    "sizes": "512x512"
   }
 ],
   "theme_color": "#278282",
